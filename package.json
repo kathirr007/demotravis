@@ -4,7 +4,6 @@
   "description": "To check autodeploy using travis",
   "main": "index.html",
   "scripts": {
-    // "predeploy": "npm run build",
     "deploy": "./deploy.sh"
   },
   "repository": {
