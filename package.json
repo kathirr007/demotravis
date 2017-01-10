@@ -1,0 +1,20 @@
+{
+  "name": "demotravis",
+  "version": "1.0.0",
+  "description": "To check autodeploy using travis",
+  "main": "index.html",
+  "scripts": {
+    // "predeploy": "npm run build",
+    "deploy": "./deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kathirr007/demotravis.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kathirr007/demotravis/issues"
+  },
+  "homepage": "https://github.com/kathirr007/demotravis#readme"
+}

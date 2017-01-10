@@ -1,29 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+GIT_DEPLOY_REPO=${GIT_DEPLOY_REPO:-$(node -e 'process.stdout.write(require("./package.json").repository)')}
 
-set -o errexit -o nounset
+cd dist && \
+$(npm bin)/rimraf .git
+git init && \
+git add . && \
+git commit -m "Deploy to GitHub Pages" && \
+git push --force "${GIT_DEPLOY_REPO}" master
 
-if [ "$TRAVIS_BRANCH" != "master" ]
-then
-  echo "This commit was made against the $TRAVIS_BRANCH and not the master! No deploy!"
-  exit 0
-fi
-
-rev=$(git rev-parse --short HEAD)
-
-# cd stage/_book
-
-git init
-git config user.name "Travis CI"
-git config user.email "kathirr007@gmail.com"
-
-git remote add upstream "https://$GH_TOKEN@github.com/kathirr007/demotravis.git"
-git fetch upstream
-git reset upstream/gh-pages
-
-# echo "rustbyexample.com" > CNAME
-
-touch .
-
-git add -A .
-git commit -m "rebuild pages at ${rev}"
-git push -q upstream HEAD:gh-pages

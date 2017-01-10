@@ -1,7 +1,7 @@
 env:
   global:
-  - ENCRYPTION_LABEL: ac8eb6ebc312
   - COMMIT_AUTHOR_EMAIL: kathirr007@gmail.com
+  - GH_REF: https://github.com/kathirr007/demotravis.git
   - secure: K9vxHSHW+L0ibQhCINydQEq7aA71747ogkvUeaXnPQMVOvwFhOKadxKiIQoCNNOwJUyFgsKJyTg71J/Uyb9Kiy5fBWOyN/+Jxp4JnUtvCGtoHSNvzaqkCIF9Hvb6VpxrrNtdq41puU064t6zqGeOcym5CfWMlkpXyFfzPxe09JOWiJceJ1therlagdcVpfjyJ9WZPNHWoOprfvgyfiUgQf7h62DTz7W+cgLA+BC34XZsCSzlnijmLg0MyYkC15SdLFhffC5qwMcNPvAYSSfl7oRv/AVbSbqPJ5Ro2NfOAg9L8BoLglX8uFY1irha0GKMjvMJBfKIkSw6QYzAt4LpdLzkyfblb1Mi6jmU1nK6rqCNUQLrF9pDSgQkUFwcafAmmR3dJX0wp6cRXZXyMcoMRNu5x7opO/qP3mVi4vhusOx2+IJxEc4HoMKdqtZ7s630bZN0teoxr9FgHifYfLdUacNH9KKqw+BnBcz5WD81xiJHqe9cuLgPaF+uboFpR/m1HTEBjlXRjL+0fultZEjaYPTKT8Rz/43im5FOYQLJTtM2paZg1rtCRSRaz9P6yWVVbdjE5/xeSrlVuBbcXvf1BqDz2YmFMyleltwWEaJtZ/flPbxmX3qjTE/IArVuzdAmCM7gwIXF3WI+nlqmcZd6HgdI78fk80y/g8YAJfi8J34=
   
 language: node_js
@@ -15,11 +15,17 @@ before_script:
   - npm install
   - npm install gulp
   - npm install -g gulp
+
+
+
+deploy:
+  # keep the build we just made with "yarn test" (dist/)
+  skip_cleanup: true
+
+  # define the script to use for deployment
+
+provider: script
 script: 
   # - gulp travis 
-  - bash ./deploy.sh
-
-after_success:
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash deploy.sh
-  - bash deploy.sh  
+  - ./deploy.sh
 
