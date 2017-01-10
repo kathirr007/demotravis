@@ -27,5 +27,5 @@ deploy:
 provider: script
 script: 
   # - gulp travis 
-  - ./deploy.sh
+  - chmod +x ./deploy.sh
 
