@@ -13,7 +13,7 @@ rev=$(git rev-parse --short HEAD)
 # cd stage/_book
 
 git init
-git config user.name "kathirr007"
+git config user.name "Travis CI"
 git config user.email "kathirr007@gmail.com"
 
 git remote add upstream "https://$GH_TOKEN@github.com/kathirr007/demotravis.git"
