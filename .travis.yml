@@ -24,7 +24,8 @@ deploy:
 
   # define the script to use for deployment
 
-provider: script
+provider:
+  provider: script
 script: 
   # - gulp travis 
   - chmod +x ./deploy.sh
